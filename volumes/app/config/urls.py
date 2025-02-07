@@ -30,7 +30,7 @@ urlpatterns+=[
 ]
 
 urlpatterns+=[
-    path('Api/',include('blog.urls')),
+    path('',include('blog.urls')),
 ]
 
 if settings.DEBUG:
