@@ -19,6 +19,7 @@ class ArticleList(ListAPIView):
 class ArticleDetail(RetrieveUpdateDestroyAPIView):
     queryset=Article.objects.filter(status=True)
     serializer_class=ArticleSerializer
+    lookup_field='slug'
 
 
 class UserList(ListAPIView):
