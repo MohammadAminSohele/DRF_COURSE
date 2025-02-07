@@ -1,6 +1,7 @@
 from django.shortcuts import render
 
 from rest_framework.generics import ListAPIView,ListCreateAPIView,RetrieveAPIView,DestroyAPIView,RetrieveDestroyAPIView,UpdateAPIView,RetrieveUpdateAPIView,RetrieveUpdateDestroyAPIView
+from rest_framework.permissions import IsAdminUser
 
 from .models import Article
 from django.contrib.auth.models import User
@@ -25,7 +26,9 @@ class ArticleDetail(RetrieveUpdateDestroyAPIView):
 class UserList(ListAPIView):
     queryset=User.objects.all()
     serializer_class=UserSerializer
+    permission_classes=(IsAdminUser,)
 
 class UserDetail(RetrieveUpdateDestroyAPIView):
     queryset=User.objects.all()
     serializer_class=UserSerializer
+    permission_classes=(IsAdminUser,)
