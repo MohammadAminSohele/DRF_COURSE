@@ -8,7 +8,7 @@ from rest_framework.permissions import IsAdminUser
 from .models import Article
 from django.contrib.auth.models import User
 from .serializers import ArticleSerializer,UserSerializer
-from .permissions import IsSuperUser
+from .permissions import IsSuperUser,IsAuthorOrReadOnly,IsStaffOrReadOnly
 
 # Create your views here.
 
@@ -24,6 +24,7 @@ class ArticleDetail(RetrieveUpdateDestroyAPIView):
     queryset=Article.objects.filter(status=True)
     serializer_class=ArticleSerializer
     lookup_field='slug'
+    permission_classes=(IsStaffOrReadOnly,IsAuthorOrReadOnly)
 
 
 class UserList(ListCreateAPIView):
