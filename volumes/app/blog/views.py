@@ -49,11 +49,6 @@ class UserDetail(RetrieveUpdateDestroyAPIView):
 
 class RevokeToken(APIView):
     permission_classes=(IsAuthenticated,)
-    def get(self, request):
-        return Response({'method':'get'})
-    def put(self, request):
-        return Response({'method':'put'})
     def delete(self, request):
-        return Response({'method':'delete'})
-    def post(self, request):
-        return Response({'method':'post'})
+        request.auth.delete()
+        return Response({'msg':'Token revoke!'})
