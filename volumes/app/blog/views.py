@@ -2,8 +2,8 @@ from django.shortcuts import render
 
 from rest_framework.generics import ListCreateAPIView,RetrieveUpdateDestroyAPIView
 # ListAPIView,RetrieveAPIView,DestroyAPIView,RetrieveDestroyAPIView,UpdateAPIView,RetrieveUpdateAPIView
-from rest_framework.views import APIView
-from rest_framework.response import Response
+# from rest_framework.views import APIView
+# from rest_framework.response import Response
 
 
 from rest_framework.permissions import IsAuthenticated
@@ -47,8 +47,8 @@ class UserDetail(RetrieveUpdateDestroyAPIView):
     serializer_class=UserSerializer
     permission_classes=(IsSuperUserOrStaffReadOnly,)
 
-class RevokeToken(APIView):
-    permission_classes=(IsAuthenticated,)
-    def delete(self, request):
-        request.auth.delete()
-        return Response(status=204)
+# class RevokeToken(APIView):
+#     permission_classes=(IsAuthenticated,)
+#     def delete(self, request):
+#         request.auth.delete()
+#         return Response(status=204)
