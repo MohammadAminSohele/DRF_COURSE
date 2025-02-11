@@ -20,8 +20,7 @@ from django.urls import path,include
 from .import settings
 
 from django.conf.urls.static import static
-# from rest_framework.authtoken.views import obtain_auth_token
-
+from dj_rest_auth.views import PasswordResetConfirmView
 # from blog.views import RevokeToken
 
 urlpatterns = [
@@ -35,7 +34,7 @@ urlpatterns+=[
 urlpatterns+=[
     path('api/rest-auth/', include('dj_rest_auth.urls')),
     path('api/rest-auth/registration/', include('dj_rest_auth.registration.urls')),
-    # path('api-auth/', include('rest_framework.urls')),    
+    path('api/rest-auth/password/reset/confirm/<uidb64>/<token>/', PasswordResetConfirmView.as_view(), name='password_reset_confirm'),
     # path('api/token-auth/', obtain_auth_token),
     # path('api/revoke/', RevokeToken.as_view()),
 ]
