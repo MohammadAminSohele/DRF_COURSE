@@ -20,8 +20,9 @@ from django.urls import path,include
 from .import settings
 
 from django.conf.urls.static import static
-# from dj_rest_auth.views import PasswordResetConfirmView
-from rest_framework_simplejwt import views as jwt_views
+
+from dj_rest_auth.views import PasswordResetConfirmView
+# from rest_framework_simplejwt import views as jwt_views
 # from blog.views import RevokeToken
 
 urlpatterns = [
@@ -33,11 +34,11 @@ urlpatterns+=[
 ]
 
 urlpatterns+=[
-    path('api/token/', jwt_views.TokenObtainPairView.as_view(), name='token_obtain_pair'),
-    path('api/token/refresh/', jwt_views.TokenRefreshView.as_view(), name='token_refresh'),
-    # path('api/rest-auth/', include('dj_rest_auth.urls')),
-    # path('api/rest-auth/registration/', include('dj_rest_auth.registration.urls')),
-    # path('api/rest-auth/password/reset/confirm/<uidb64>/<token>/', PasswordResetConfirmView.as_view(), name='password_reset_confirm'),
+    # path('api/token/', jwt_views.TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    # path('api/token/refresh/', jwt_views.TokenRefreshView.as_view(), name='token_refresh'),
+    path('api/rest-auth/', include('dj_rest_auth.urls')),
+    path('api/rest-auth/registration/', include('dj_rest_auth.registration.urls')),
+    path('api/rest-auth/password/reset/confirm/<uidb64>/<token>/', PasswordResetConfirmView.as_view(), name='password_reset_confirm'),
     # path('api/token-auth/', obtain_auth_token),
     # path('api/revoke/', RevokeToken.as_view()),
 ]
