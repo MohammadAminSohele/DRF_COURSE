@@ -29,7 +29,3 @@ class UserViewSet(ModelViewSet):
     queryset=get_user_model().objects.all()
     serializer_class=UserSerializer
     permission_classes=(IsSuperUserOrStaffReadOnly,)
-
-class AuthorRetrive(RetrieveAPIView):
-    queryset=get_user_model().objects.filter(is_staff=True)
-    serializer_class=AuthorSerializer
