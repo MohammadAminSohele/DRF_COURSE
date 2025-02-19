@@ -8,7 +8,7 @@ class AuthorUsernameField(serializers.RelatedField):
         return value.username
 
 class ArticleSerializer(serializers.ModelSerializer):
-    author=AuthorUsernameField(read_only=True)
+    author=serializers.CharField(source='author.username',read_only=True)
     class Meta:
         model=Article
         fields='__all__'
