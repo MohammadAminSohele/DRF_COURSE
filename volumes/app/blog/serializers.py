@@ -9,7 +9,7 @@ class AuthorSerializer(serializers.ModelSerializer):
         model=get_user_model()
         fields=['id','username','first_name','last_name']
 class ArticleSerializer(serializers.ModelSerializer):
-    author=AuthorSerializer()
+    author=serializers.HyperlinkedIdentityField(view_name='api:AuthorRetrive')
     class Meta:
         model=Article
         fields='__all__'
