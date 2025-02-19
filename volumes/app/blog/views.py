@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
 
 from rest_framework.viewsets import ModelViewSet
 
@@ -21,6 +21,6 @@ class ArticleViewSet(ModelViewSet):
         return [permission() for permission in permission_classes]
 
 class UserViewSet(ModelViewSet):
-    queryset=User.objects.all()
+    queryset=get_user_model().objects.all()
     serializer_class=UserSerializer
     permission_classes=(IsSuperUserOrStaffReadOnly,)
