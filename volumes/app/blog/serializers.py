@@ -9,6 +9,11 @@ class ArticleSerializer(serializers.ModelSerializer):
         fields='__all__'
         # fields=(title'slug','author','content','published','status')
         # exclude =('created','updated')
+    def validate_title(self, value):
+        filter_list=['wordpress','c','c++']
+        for i in filter_list:
+            if i in value:
+                raise serializers.ValidationError("Dont say ever these words !! make me so sad")
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
