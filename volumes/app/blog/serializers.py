@@ -4,7 +4,14 @@ from .models import Article
 from django.contrib.auth import get_user_model
 
 class ArticleSerializer(serializers.ModelSerializer):
-    # author=
+    def get_author(self,obj):
+        # return obj.author.username
+        return {
+            'Username':obj.author.username,
+            'FirstName':obj.author.first_name,
+            'LastName':obj.author.last_name,
+        }
+    author=serializers.SerializerMethodField('get_author')
     class Meta:
         model=Article
         fields='__all__'
