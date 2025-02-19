@@ -3,7 +3,9 @@ from rest_framework import serializers
 from .models import Article
 from django.contrib.auth import get_user_model
 
-class ArticleSerializer(serializers.ModelSerializer):
+from drf_dynamic_fields import DynamicFieldsMixin
+
+class ArticleSerializer(DynamicFieldsMixin,serializers.ModelSerializer):
     def get_author(self,obj):
         # return obj.author.username
         return {
