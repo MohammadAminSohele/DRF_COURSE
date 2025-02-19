@@ -6,7 +6,7 @@ from rest_framework.viewsets import ModelViewSet
 from rest_framework.generics import RetrieveAPIView
 
 from .models import Article
-from .serializers import ArticleSerializer,UserSerializer,AuthorSerializer
+from .serializers import ArticleSerializer,UserSerializer
 from .permissions import IsAuthorOrReadOnly,IsStaffOrReadOnly,IsSuperUserOrStaffReadOnly
 
 # Create your views here.
