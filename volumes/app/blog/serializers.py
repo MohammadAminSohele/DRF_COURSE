@@ -3,12 +3,8 @@ from rest_framework import serializers
 from .models import Article
 from django.contrib.auth import get_user_model
 
-class AuthorUsernameField(serializers.RelatedField):
-    def to_representation(self, value):
-        return value.username
-
 class ArticleSerializer(serializers.ModelSerializer):
-    author=serializers.CharField(source='author.username',read_only=True)
+    # author=
     class Meta:
         model=Article
         fields='__all__'
